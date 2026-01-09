@@ -1,0 +1,442 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home | GreatKart {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .navbar {
+            width: 100%;
+            z-index: 9999;
+            /* keeps dropdown above everything */
+        }
+
+        .carousel {
+            margin-top: 86px;
+
+        }
+
+        h1 {
+            top: 34vh;
+        }
+
+        a {
+            color: #212529;
+            text-decoration: blink;
+        }
+
+        .exthome {
+            margin-left: 12vh;
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+
+
+        .product-img {
+            height: 280px;
+            object-fit: contain;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .discount-badge {
+            background: #ff3b30;
+            color: white;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .rating {
+            font-size: 0.9rem;
+        }
+
+        .filter-badge {
+            background: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        .card-body {
+            cursor: pointer;
+        }
+
+        .Logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .page-shift {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+        }
+
+        .footer-shift {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+        }
+
+
+
+
+
+        /* The side navigation menu */
+        .sidebar {
+            width: 200px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+            top: 89px;
+        }
+
+        /* Sidebar links */
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        /* Active/current link */
+        .sidebar a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        /* Links on mouse-over */
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+        div.content {
+            margin-left: 200px;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+
+        /* On screens that are less than 700px wide, make the sidebar into a topbar */
+        /* @media screen and (max-width: 700px) {
+     .sidebar {
+         width: 100%;
+         height: auto;
+         position: relative;
+     }
+
+     .sidebar a {
+         float: left;
+     }
+
+     div.content {
+         margin-left: 0;
+     }
+ } */
+
+        /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+
+        /* sidebar responsive navbar css*/
+        @media (max-width: 400px) {
+            .footer-shift {
+                margin-left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .footer-shift {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+        }
+
+        @media (max-width: 380px) {
+            .sidebar {
+                width: 85px;
+
+            }
+
+            .page-shift {
+                margin-left: 86px;
+                width: calc(130.5% - 200px);
+            }
+
+            .footer-shift {
+                margin-left: 86px;
+                width: calc(130.5% - 200px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <div class="page-shift">
+        <div id="carouselExampleAutoplaying" class="carousel slide mt-50px" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/sale_image1.jpeg' %}" class="d-block w-100" alt="sale1" height="400"
+                        width="800" title="1" />
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/sale_image2.jpeg' %}" class="d-block w-100" alt="sal2" height="400"
+                        width="800" title="2" />
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/sale_image4.jpeg' %}" class="d-block w-100" alt="sale3" height="400"
+                        width="800" title="3" />
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <br>
+        <hr>
+        <div class="topSpace text-center mt-16">
+            <div>
+                <h1 class="collection-title-new" itemprop="name">Product</h1>
+            </div>
+        </div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a href="#"><img src="{% static 'images/product_image/cat3.jpg' %}"
+                            class="rounded-circle mb-3 border border-primary" alt="Shoe" height="150" width="150"></a>
+                    <h3>Shoes</h3>
+                    <p class="text-muted">
+                        Featuring the latest smartphone technology with premium design and performance.
+                    </p>
+                    <a href="base.html" class="btn btn-outline-secondary">View More >></a>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <a href="#"><img src="{% static 'images/product_image/cat2.jpg' %}"
+                            class="rounded-circle mb-3 border border-primary" alt="Shoe" height="150" width="150"></a>
+                    <h3>Shoes</h3>
+                    <p class="text-muted">
+                        Featuring the latest smartphone technology with premium design and performance.
+                    </p>
+                    <a href="#" class="btn btn-outline-secondary">View More >></a>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <a href="#"><img src="{% static 'images/product_image/cat4.jpg' %}"
+                            class="rounded-circle mb-3 border border-primary" alt="Shoe" height="150" width="150"></a>
+                    <h3>Shoes</h3>
+                    <p class="text-muted">
+                        Featuring the latest smartphone technology with premium design and performance.
+                    </p>
+                    <a href="#" class="btn btn-outline-secondary">View More >></a>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <div class="container">
+            <header class="section-heading">
+                <a href="" class="btn btn-outline-primary float-end d-lg-inline">See
+                    all</a>
+                <h3 class="section-title mb-4">Popular Product</h3>
+            </header>
+        </div>
+
+        <div class="container my-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col">
+                    <div class="card product-card h-100">
+                        <a href="{% url 'pdetail' %}"><img src="{% static 'images/product_image/cat4.jpg' %}"
+                                alt="first card" class="card-img-top product-img" /></a>
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title text-truncate">SPAR Men Polyester Regular Fit Printed T-Shirt (Black)
+                            </h6>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>
+                                        <strong class="fs-5 text-dark">Rs.179</strong>
+                                        <del class="origional-price ms-2">Rs.799</del>
+                                        <span class="discount-badge ms-2">78% OFF</span>
+                                    </div>
+                                </div>
+                                <div class="rating text-warning">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card product-card h-100">
+                        <img src="{% static 'images/product_image/cat4.jpg' %}" alt="first card"
+                            class="card-img-top product-img" />
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title text-truncate">SPAR Men Polyester Regular Fit Printed T-Shirt (Black)
+                            </h6>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>
+                                        <strong class="fs-5 text-dark">Rs.179</strong>
+                                        <del class="origional-price ms-2">Rs.799</del>
+                                        <span class="discount-badge ms-2">78% OFF</span>
+                                    </div>
+                                </div>
+                                <div class="rating text-warning">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card product-card h-100">
+                        <img src="{% static 'images/product_image/cat4.jpg' %}" alt="first card"
+                            class="card-img-top product-img" />
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title text-truncate">SPAR Men Polyester Regular Fit Printed T-Shirt (Black)
+                            </h6>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>
+                                        <strong class="fs-5 text-dark">Rs.179</strong>
+                                        <del class="origional-price ms-2">Rs.799</del>
+                                        <span class="discount-badge ms-2">78% OFF</span>
+                                    </div>
+                                </div>
+                                <div class="rating text-warning">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card product-card h-100">
+                        <img src="{% static 'images/product_image/cat4.jpg' %}" alt="first card"
+                            class="card-img-top product-img" />
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title text-truncate">SPAR Men Polyester Regular Fit Printed T-Shirt (Black)
+                            </h6>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>
+                                        <strong class="fs-5 text-dark">Rs.179</strong>
+                                        <del class="origional-price ms-2">Rs.799</del>
+                                        <span class="discount-badge ms-2">78% OFF</span>
+                                    </div>
+                                </div>
+                                <div class="rating text-warning">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card product-card h-100">
+                        <img src="{% static 'images/product_image/cat4.jpg' %}" alt="first card"
+                            class="card-img-top product-img" />
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title text-truncate">SPAR Men Polyester Regular Fit Printed T-Shirt (Black)
+                            </h6>
+                            <div class="mt-auto">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>
+                                        <strong class="fs-5 text-dark">Rs.179</strong>
+                                        <del class="origional-price ms-2">Rs.799</del>
+                                        <span class="discount-badge ms-2">78% OFF</span>
+                                    </div>
+                                </div>
+                                <div class="rating text-warning">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <p class="pull-right"><a href="#">Bakc To Home</a></p>
+        </div>
+    </div>
+
+
+    <!-- The sidebar -->
+    <div class="sidebar">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+
+    <!-- Page content -->
+    <div class="content">
+        ..
+    </div>
+    {% endblock %}
+</body>
+
+</html>

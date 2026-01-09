@@ -1,33 +1,110 @@
 {% extends 'base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Home | GreatKart{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home | GreatKart {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 
-{% block content %}
-<div id="carouselExampleAutoplaying" class="carousel slide mt-40px" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{% static 'images/sale_image1.jpeg' %}" class="d-block w-100" alt="sale1" height="400" width="800"
-                title="1" />
+<body>
+    {% block content %}
+    <div class="page-shift">
+        <div id="carouselExampleAutoplaying" class="carousel slide mt-50px" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/sale_image1.jpeg' %}" class="d-block w-100" alt="sale1" height="400"
+                        width="800" title="1" />
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/sale_image2.jpeg' %}" class="d-block w-100" alt="sal2" height="400"
+                        width="800" title="2" />
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/sale_image4.jpeg' %}" class="d-block w-100" alt="sale3" height="400"
+                        width="800" title="3" />
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <div class="carousel-item">
-            <img src="{% static 'images/sale_image2.jpeg' %}" class="d-block w-100" alt="sal2" height="400" width="800"
-                title="2" />
-        </div>
-        <div class="carousel-item">
-            <img src="{% static 'images/sale_image4.jpeg' %}" class="d-block w-100" alt="sale3" height="400" width="800"
-                title="3" />
-        </div>
+
+        <br>
+        <hr>
+        <br>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-{% endblock %}
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li>All Products</li>
+                <li>Women-Clothing</li>
+                <li>Men-Clothing</li>
+                <li class="active">Watches</li>
+                <li>Shoes & Handbags</li>
+                <li>Books</li>
+            </ul>
+        </aside>
+
+        <main class="product-grid">
+            <div class="card">
+                <img src="{% static 'images/product_image/cat4.jpg' %}" alt="Black Watch">
+                <div class="card-info">
+                    <p>Black Watch</p>
+                    <p class="price">Rs 999</p>
+                    <button class="add-btn">Add To Cart</button>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="{% static 'images/product_image/cat4.jpg' %}" alt="Casio Analog">
+                <div class="card-info">
+                    <p>Casio Analog</p>
+                    <p class="price">Rs 1000</p>
+                    <button class="add-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="{% static 'images/product_image/cat4.jpg' %}" alt="Combo Watches">
+                <div class="card-info">
+                    <p>Combo watches</p>
+                    <p class="price">Rs 500</p>
+                    <del class="origional-price">Rs.799</del>
+                    <button class="add-btn">Add To Cart</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'images/product_image/cat4.jpg' %}" alt="Combo Watches">
+                <div class="card-info">
+                    <p>Combo watches</p>
+                    <p class="price">Rs 500</p>
+                    <del class="origional-price">Rs.799</del>
+                    <button class="add-btn">Add To Cart</button>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <div class="container">
+        <p class="pull-right"><a href="#">Bakc To Home</a></p>
+    </div>
+
+
+
+
+    {% endblock %}
+</body>
+
+</html>
