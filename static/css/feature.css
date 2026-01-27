@@ -1,0 +1,70 @@
+.features {
+    background: #fffaf4;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.features .subtitle {
+    color: #777;
+    margin-bottom: 50px;
+    font-size: 16px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.feature-card {
+    background: #ffffff;
+    padding: 35px 20px;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.icon-circle {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border-radius: 50%;
+    background: rgba(178, 34, 34, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.icon-circle i {
+    font-size: 32px;
+    color: #8B0000;
+}
+
+.feature-card h4 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
+

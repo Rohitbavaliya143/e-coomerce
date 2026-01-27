@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-shift">
+    <div id="carouselExampleAutoplaying" class="carousel slide mt-50px" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/sale_image1.jpeg' %}" class="d-block w-100" alt="sale1" height="400"
+                    width="800" title="1" />
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/sale_image2.jpeg' %}" class="d-block w-100" alt="sal2" height="400"
+                    width="800" title="2" />
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/sale_image4.jpeg' %}" class="d-block w-100" alt="sale3" height="400"
+                    width="800" title="3" />
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+</div>
+<div class="container">
+    <aside class="sidebar">
+        <ul>
+            {% for sidebar in menu_categories %}
+            <li><a href="{% url 'products_by_category' sidebar.slug %}">{{ sidebar.category_name }}</a></li>
+            <!-- <li class="active">Watches</li> -->
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <main class="product-grid">
+        {% if selected_audience %}
+        <h3 class="mb-3">
+            {{ selected_audience|title }} Products
+        </h3>
+        {% endif %}
+        {% for product in products %}
+        <div class="card">
+            <a href="./product-detail.html" class="img-wrap"><img src="{{ product.images.url }}" alt="Black Watch"></a>
+            <div class="card-info">
+                <p>{{ product.product_name }}</p>
+                <p class="price">Rs {{ product.price }}</p>
+                <p>Total stock: {{ product.stock }}</p>
+                <button class="add-btn">Add To Cart</button>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+<div class="container">
+    <p class="pull-right"><a href="#">Bakc To Home</a></p>
+</div>
+{% endblock %}

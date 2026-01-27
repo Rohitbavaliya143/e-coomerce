@@ -1,0 +1,139 @@
+/* Hero Section */
+.about-hero {
+    /* background image if you want, uncomment next line */
+    /* background: url('../images/about-hero.jpg') center/cover no-repeat; */
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Brand Story / Mission Section */
+.brand-story {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+.brand-story h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.brand-story p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Mission & Vision Section */
+.mission-vision {
+    padding: 80px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mission-vision div {
+    flex: 1 1 300px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.mission-vision h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Team Section */
+.team {
+    padding: 80px 20px;
+    background: #f9f9f9;
+}
+
+.team h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+
+.team .team-member {
+    flex: 1 1 250px;
+    text-align: center;
+}
+
+.team .team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Achievements Section */
+.achievements {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.achievements h2 {
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+
+.achievements div {
+    flex: 1 1 200px;
+}
+
+/* CTA Section */
+.cta {
+    background: #ff6f61;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta a {
+    padding: 15px 35px;
+    background: #fff;
+    color: #ff6f61;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mission-vision,
+    .team,
+    .achievements {
+        flex-direction: column;
+    }
+
+    .team .team-member,
+    .mission-vision div,
+    .achievements div {
+        margin-bottom: 30px;
+    }
+}

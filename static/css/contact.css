@@ -1,0 +1,72 @@
+/* ==============================================
+   Contact Page Specific Styles
+   ============================================== */
+
+:root {
+    --teal: #0d9488;
+    --teal-dark: #0f766e;
+    --teal-light: #e6f4f1;
+}
+
+/* Hero */
+.contact-hero {
+    background: linear-gradient(135deg, var(--teal) 0%, #087f73 100%);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+    .contact-hero {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+/* Cards */
+.contact-card,
+.contact-info {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-card:hover,
+.contact-info:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18) !important;
+}
+
+.shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04) !important;
+}
+
+/* Buttons */
+.btn-teal {
+    background-color: var(--teal);
+    border-color: var(--teal);
+    transition: all 0.3s ease;
+}
+
+.btn-teal:hover {
+    background-color: var(--teal-dark);
+    border-color: var(--teal-dark);
+    transform: translateY(-2px);
+}
+
+/* Text colors */
+.text-teal { color: var(--teal) !important; }
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    section.py-lg-6 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    .lead {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us | MyShop{% endblock %}
+
+{% block content %}
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<!-- Hero Section -->
+<section class="about-hero">
+    <h1>About Us</h1>
+    <p>Learn who we are, what we stand for, and why we are passionate about bringing you the best products.</p>
+</section>
+
+<!-- Brand Story -->
+<section class="brand-story">
+    <div>
+        <h2>Our Story</h2>
+        <p>
+            MyShop started with a simple mission: <strong>to bring high-quality, sustainable products directly to your door</strong>. 
+            We believe in transparency, reliability, and giving our customers a shopping experience that feels personal and meaningful.
+        </p>
+    </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="mission-vision">
+    <div>
+        <h3>Our Mission</h3>
+        <p>To provide high-quality, eco-friendly products that make our customers' lives better while caring for the planet.</p>
+    </div>
+    <div>
+        <h3>Our Vision</h3>
+        <p>To become the most trusted online store for sustainable and stylish products worldwide.</p>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-member">
+        <img src="{% static 'images/product_image/cat1.jpg' %}" alt="Founder">
+        <h4>John Doe</h4>
+        <p>Founder & CEO</p>
+    </div>
+    <div class="team-member">
+        <img src="{% static 'images/product_image/cat1.jpg' %}" alt="Co-Founder">
+        <h4>Jane Smith</h4>
+        <p>Co-Founder & CTO</p>
+    </div>
+    <div class="team-member">
+        <img src="{% static 'images/product_image/Men1.jpg' %}" alt="Marketing Head">
+        <h4>Mike Lee</h4>
+        <p>Marketing Head</p>
+    </div>
+</section>
+
+<!-- Achievements -->
+<section class="achievements">
+    <h2>Our Achievements</h2>
+    <div>
+        <h3>10,000+</h3>
+        <p>Happy Customers</p>
+    </div>
+    <div>
+        <h3>500+</h3>
+        <p>Products Available</p>
+    </div>
+    <div>
+        <h3>5</h3>
+        <p>Awards Won</p>
+    </div>
+    <div>
+        <h3>100%</h3>
+        <p>Satisfaction Guarantee</p>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <h2>Ready to Explore Our Products?</h2>
+    <a href="{% url 'store' %}">Shop Now</a>
+</section>
+
+{% endblock %}

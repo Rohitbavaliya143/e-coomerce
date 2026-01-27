@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top">
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="{% static 'images/logo/third.png' %}" height="60" width="70" alt="Logo" class="Logo" />
@@ -22,18 +22,58 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+
+                    <!-- ALL PRODUCT DROPDOWN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            All Category
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            {% for cat in menu_categories %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'products_by_category' cat.slug %}">
+                                    {{ cat.category_name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </li>
+
+                    <!-- NORMAL MENU ITEMS -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">CONTACTUS</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'services1' %}">SERVICES</a>
+                    </li>
+
+                </ul>
+                <ul class="dropdown-menu">
+                    {% for cat in menu_categories %}
+                    <li><a class="dropdown-item" href="{% url 'products_by_category' cat.slug %}">{{
+                            cat.category_name }}</a></li>
+
+                    <!-- <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                    {% endfor %}
+                </ul>
+                </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACTUS</a>
-                    </li>
                     <!-- Account Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

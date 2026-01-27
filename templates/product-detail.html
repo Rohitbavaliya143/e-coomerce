@@ -1,14 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/product-detail.css' %}">
+<div class="container">
+  <div class="gallery">
+    <div class="main-img">
+      <img src="{{ single_product.images.url }}" alt="Blue Wool Flannel Trousers" id="mainImage">
+    </div>'
+    <div class="thumbnails">
+      <img src="{{ single_product.images.url }}" alt="Front" class="thumb active" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Blue+Wool+Flannel+Trousers">
+      <!-- <img src="https://via.placeholder.com/100x140/003366/FFFFFF?text=Side" alt="Side" class="thumb" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Side+View">
+      <img src="https://via.placeholder.com/100x140/003366/FFFFFF?text=Back" alt="Back" class="thumb" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Back+View">
+      <img src="https://via.placeholder.com/100x140/003366/FFFFFF?text=Detail" alt="Detail" class="thumb" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Close+Up"> -->
+    </div>
+  </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is ok</title>
-</head>
+  <div class="product-info">
+    <h1>{{ single_product.product_name }}</h1>
+    <div class="rating">★★★★★ 6 reviews</div>
 
-<body>
-    <h1>Hello product detail</h1>
-</body>
+    <div class="price">
+      <span class="was">{{ single_product.price }}</span>
+      <span class="now">{{ single_product.price }}</span>
+    </div>
 
-</html>
+    <div class="color-swatch">
+      <label>Color: Blue</label>
+      <div class="swatch" style="background:#003366;" title="Blue"></div>
+    </div>
+
+    <div class="size">
+      <label>Total Stock:{{ single_product.stock }}</label>
+    </div>
+
+    <!-- <div class="size">
+      <label>Size: 32/34</label>
+      <select>
+        <option>32/34</option>
+        <option>30/32</option>
+        <option>34/36</option>
+        <option>All sizes are US sizes</option>
+      </select>
+      <a href="#" style="margin-left:15px; font-size:0.9rem;">Size Charts</a>
+    </div> -->
+
+    <div class="quantity">
+      <label>Quantity:</label>
+      <div class="qty-controls">
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
+        <input type="number" class="qty-input" id="qty" value="1" min="1">
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+
+    <div class="tax-note">Prices do not include taxes.</div>
+
+    <div class="stock">IN STOCK - ONLY A FEW LEFT</div>
+
+    <button class="add-btn">ADD TO BAG</button>
+    <a class="wishlist">ADD TO WISHLIST</a>
+
+    <div class="social">
+      <a href="#">f</a>
+      <a href="#">t</a>
+      <a href="#">in</a>
+      <a href="#">✉</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Thumbnail switch
+  document.querySelectorAll('.thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      document.getElementById('mainImage').src = thumb.dataset.full;
+    });
+  });
+
+  // Quantity +/- 
+  function changeQty(delta) {
+    const input = document.getElementById('qty');
+    let val = parseInt(input.value) || 1;
+    val = Math.max(1, val + delta);
+    input.value = val;
+  }
+</script>
+{% endblock %}

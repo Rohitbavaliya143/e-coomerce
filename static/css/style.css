@@ -9,7 +9,22 @@
      padding: 20px;
      margin: 0px 0px;
      max-width: 100% !important;
+     background: cornsilk;
+     justify-content: center;
  }
+ .container1{
+     max-width: 1200px;      /* page center width */
+    margin: 0 auto;   
+    background: cornsilk;      /* center the container */
+    padding: 20px;
+ }
+.custom-navbar {
+    background-color: #ac1818;
+    color: #dee2e6;   /* any color */
+}
+.navbar .nav-link {
+    color: white;        /* your color */
+}
 
  .sidebar {
      width: 400px;
@@ -34,12 +49,11 @@
 
  .product-grid {
      flex: 1;
-     display: grid;
-     justify-content: space-around;
-     grid-template-columns: repeat(auto-fit, minmax(250, 1fr));
-     grid-template-columns: repeat(3, 1fr);
-     gap: 20px;
-     padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    
  }
 
 
@@ -47,6 +61,8 @@
      border: 1px solid #eee;
      text-align: left;
      transition: 0.3s;
+     width: 224px;
+    height: 331px;
  }
 
  .card img {
@@ -54,6 +70,7 @@
      height: 200px;
      object-fit: contain;
      background: #fff;
+     transition: transform 0.4s ease;
  }
 
  .card-info {
@@ -79,12 +96,33 @@
  .add-btn:hover {
      background-color: #218838;
  }
+.page-shift{
+    margin-top: 13vh;
+}
+.store-box ul {
+    margin-left: 39px;
+}
+.store-box ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    width: 15%;
+    background-color: darkred;
+    padding: 10px;
+}
 
+.store-box a {
+    color: aliceblue;
+    font-size: larger;
+    text-decoration: none;
+}
 
 
 
  .carousel {
-     margin-top: 86px;
+    position: relative;
+    z-index: 1;
 
  }
 
@@ -113,7 +151,25 @@
      height: 60px;
      width: auto;
  }
+.category-banner {
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to right, #fff6c3, #fef2a8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin: 30px 0;
+}
 
+.category-banner h2 {
+    color: #00ff80;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+}
  /* Active/current link */
  .sidebar a.active {
      background-color: #04AA6D;
@@ -133,6 +189,13 @@
      height: 1000px;
  }
 
+ .card {
+     overflow: hidden;
+ }
+
+ .card img:hover {
+     transform: scale(1.1);
+ }
 
  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
  @media screen and (max-width: 400px) {
