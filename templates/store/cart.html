@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<div class="er">
+    <h1>Your Shopping Cart</h1>
+</div>
+<div class="container">
+
+    <div class="cart-layout">
+
+        <!-- Cart Items -->
+        <section class="cart-items-section">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Per Product Price</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Item 1 -->
+                     {% for cart_item in cart_items %}
+                    <tr>
+                        <td data-label="Product">
+                            <div class="product-cell">
+                                <img src="{{ cart_item.product.images.url }}"
+                                    alt="Canon EOS M50" class="product-img">
+                                <div class="product-info">
+                                    <div class="product-name">{{ cart_item.product }}</div>
+                                    <div class="product-meta">
+                                        Matrix: 25 Mpx<br>
+                                        {{ cart_item.product.product_name }}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-label="Quantity">
+                            <div class="quantity-control">
+                                <a href="{% url 'remove_cart' cart_item.product_id %}"><button class="qty-btn">−</button></a>
+                                <span class="qty-display">{{ cart_item.quantity }}</span>
+                                <a href="{% url 'add_cart' cart_item.product.id %}"><button class="qty-btn">+</button></a>
+                            </div>
+                        </td>
+                        <td data-label="Price" class="price-cell">
+                           {{ cart_item.product.price }}
+                        </td>
+                         <td data-label="Price" class="price-cell">
+                           {{ cart_item.sub_total }}
+                        </td>
+                        <td>
+                            <a href="{% url 'delete_cart_item' cart_item.product.id %}">
+                                    <button class="remove-btn">Remove</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Summary -->
+        <aside class="cart-summary">
+            <h2 class="summary-title">Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>{{ total }}</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax: {{ tax}}</span>
+                <span></span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+            <span>{{ grand_total }}</span>
+            </div>
+
+            <button class="checkout-btn">Checkout →</button>
+            <a href="#" class="continue-link">← Continue Shopping</a>
+        </aside>
+
+    </div>
+</div>
+{% endblock %}

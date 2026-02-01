@@ -1,0 +1,290 @@
+:root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --danger: #dc2626;
+      --gray: #6b7280;
+      --light: #f9fafb;
+      --border: #e5e7eb;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+
+    /* * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0; */
+    
+    /* body {
+      
+      color: #111827;
+      padding: 1.5rem 1rem;
+      min-height: 100vh;
+    } */
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+     
+    }
+    
+    .er h1{
+        margin-top: 12vh;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color:#dc3545;;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .cart-layout {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .cart-items-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cart-table th,
+    .cart-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cart-table th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: var(--gray);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .product-cell {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .product-img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #e5e7eb;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-name {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-meta {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .qty-btn:hover {
+      background: #f1f5f9;
+    }
+
+    .qty-display {
+      width: 40px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .price-cell {
+      font-weight: 600;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    .remove-btn {
+      background: #fee2e2;
+      color: var(--danger);
+      border: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .remove-btn:hover {
+      background: #fecaca;
+    }
+
+    /* Summary Sidebar */
+    .cart-summary {
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      height: fit-content;
+    }
+
+    .summary-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .summary-row.total {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding-top: 1rem;
+      border-top: 2px solid #e5e7eb;
+      margin-top: 0.5rem;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 1.25rem 0 1rem;
+      transition: background 0.2s;
+    }
+
+    .checkout-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .continue-link {
+      display: block;
+      text-align: center;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .continue-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ──────────────────────────────────────────────
+       MEDIA QUERIES - RESPONSIVE DESIGN
+    ────────────────────────────────────────────── */
+
+    @media (min-width: 1024px) {
+      .cart-layout {
+        grid-template-columns: 2.6fr 1fr;
+      }
+      .cart-summary {
+        position: sticky;
+        top: 2rem;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .cart-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .cart-table thead {
+        display: none;
+      }
+
+      .cart-table tr {
+        display: block;
+        margin-bottom: 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .cart-table td {
+        display: block;
+        border: none;
+        padding: 0.9rem 1.25rem;
+        position: relative;
+        text-align: right;
+      }
+
+      .cart-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1.25rem;
+        font-weight: 600;
+        color: var(--gray);
+        text-align: left;
+      }
+
+      .product-cell {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .quantity-control {
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+
+      .product-img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .checkout-btn {
+        padding: 0.9rem;
+        font-size: 1rem;
+      }
+    }

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<div class="container">
+    <div class="header">
+        <div class="text-center pt-5 pb-3">
+            <div class="mx-auto mb-3"
+                style="width: 90px; height: 90px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                <i class="fa fa-lock" style="font-size:40px;color:#f97316;"></i>
+            </div>
+            <h1 class="text-white fw-bold mb-1" style="font-size: 2.1rem;">Welcome back</h1>
+        </div>
+        <h1>Login to your account</h1>
+        <p>Secure access to your dashboard</p>
+    </div>
+
+    <div class="form-content">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:red;text-align:center">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <div class="form-group">
+                <label><i class="fa fa-envelope"></i> Email</label>
+                <input type="email" name="email" placeholder="atul@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-lock"></i> Password</label>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn-register">
+                <i class="fa fa-sign-in-alt"></i> Login
+            </button>
+        </form>
+
+        <div class="login-link">
+            Don't have an account? <a href="{% url 'register' %}">Create one</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

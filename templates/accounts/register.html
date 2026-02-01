@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Page CSS -->
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<div class="container">
+    <!-- Top orange circle avatar + Register here..!! -->
+    <div class="header">
+        <div class="text-center pt-5 pb-3">
+            <div class="mx-auto mb-3"
+                style="width: 90px; height: 90px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="7" r="4" stroke="#f97316" stroke-width="2" />
+                    <path d="M4 21V17C4 13.6863 6.68629 11 10 11H14C17.3137 11 20 13.6863 20 17V21H4Z" stroke="#f97316"
+                        stroke-width="2" />
+                </svg>
+            </div>
+            <h1 class="text-white fw-bold mb-1" style="font-size: 2.1rem;">Register here..!!</h1>
+        </div>
+        <h1>Create Your Account</h1>
+        <p>Join thousands of happy shoppers today</p>
+    </div>
+
+    <div class="form-content">
+        <form method="POST" action="{% url 'register' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- <div class="form-group">
+                <label><i class="fa fa-user"></i> First Name</label>
+                <input type="text" name="first_name" placeholder="Atul Kumar" required>
+            </div>
+             <div class="form-group">
+                <label><i class="fa fa-user"></i> Last Name</label>
+                <input type="text" name="last_name" placeholder="Atul Kumar" required>
+            </div>
+             <div class="form-group">
+                <label><i class="fa fa-user"></i> User Name</label>
+                <input type="text" name="username" placeholder="Atul Kumar" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fa fa-envelope"></i> Email Address</label>
+                <input type="email" name="email" placeholder="atul@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-lock"></i> Password</label>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fa fa-lock"></i> Confirm Password</label>
+                <input type="password" name="confirm" placeholder="••••••••" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fa fa-phone"></i> Phone Number</label>
+                <input type="tel" name="phone" placeholder="9876543210" required>
+            </div>
+            <button type="submit" class="btn-register">
+                <i class="fa fa-user-plus"></i> Create Account
+            </button> -->
+            
+            {{ form.non_field_errors }}
+
+            <div class="form-group">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+                {{ form.phone_number.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {{ form.password.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label_tag }}
+                {{ form.confirm_password }}
+                {{ form.confirm_password.errors }}
+            </div>
+
+            <button type="submit" class="btn-register">Create Account</button>
+        </form>
+
+        <div class="login-link">
+            Already have an account? <a href="{% url 'login' %}">Sign in</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

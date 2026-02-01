@@ -8,7 +8,8 @@
       <img src="{{ single_product.images.url }}" alt="Blue Wool Flannel Trousers" id="mainImage">
     </div>'
     <div class="thumbnails">
-      <img src="{{ single_product.images.url }}" alt="Front" class="thumb active" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Blue+Wool+Flannel+Trousers">
+      <img src="{{ single_product.images.url }}" alt="Front" class="thumb active"
+        data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Blue+Wool+Flannel+Trousers">
       <!-- <img src="https://via.placeholder.com/100x140/003366/FFFFFF?text=Side" alt="Side" class="thumb" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Side+View">
       <img src="https://via.placeholder.com/100x140/003366/FFFFFF?text=Back" alt="Back" class="thumb" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Back+View">
       <img src="https://via.placeholder.com/100x140/003366/FFFFFF?text=Detail" alt="Detail" class="thumb" data-full="https://via.placeholder.com/600x800/003366/FFFFFF?text=Close+Up"> -->
@@ -57,9 +58,15 @@
 
     <div class="stock">IN STOCK - ONLY A FEW LEFT</div>
 
-    <button class="add-btn">ADD TO BAG</button>
-    <a class="wishlist">ADD TO WISHLIST</a>
-
+    {% if single_product.stock > 0 %}
+    <div class="cart-actions">
+      <button class="add-btn">
+        <a href="{% url 'add_cart' single_product.id %}"><i class="bi bi-cart"> ADD TO CART</i></a>
+      </button>
+    </div>
+    {% else %}
+    <button class="out-btn" disabled>OUT OF STOCK</button>
+    {% endif %}
     <div class="social">
       <a href="#">f</a>
       <a href="#">t</a>

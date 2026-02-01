@@ -51,7 +51,7 @@
         {% endif %}
         {% for product in products %}
         <div class="card">
-            <a href="./product-detail.html" class="img-wrap"><img src="{{ product.images.url }}" alt="Black Watch"></a>
+            <a href="{{ product.get_url }}" class="img-wrap"><img src="{{ product.images.url }}" alt="Black Watch"></a>
             <div class="card-info">
                 <p>{{ product.product_name }}</p>
                 <p class="price">Rs {{ product.price }}</p>
