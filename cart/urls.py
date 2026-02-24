@@ -1,9 +1,22 @@
 from django.urls import path
-from .import views
+from .views import checkoutView
+from .import views 
+from accounts.views import login_view
 urlpatterns=[
     path("",views.cart,name='cart'),
     path('add_cart/<int:product_id>/',views.add_cart,name='add_cart'),
     path('remove/<int:product_id>/',views.remove_cart,name='remove_cart'),
     path('remove_cart/<int:product_id>/',views.delete_cart_item,name='delete_cart_item'),
-    
+    path('checkout/',checkoutView.as_view(),name='checkout'),
+    path('login/',login_view, name='login')
 ]
+
+
+
+# urlpatterns = [
+#     path('', views.cart, name='cart'),
+#     path('add_cart/<int:product_id>/', views.add_cart, name='add_cart'),
+#     path('remove_cart/<int:product_id>/', views.remove_cart, name='remove_cart'),
+#     path('delete_cart_item/<int:product_id>/', views.delete_cart_item, name='delete_cart_item'),
+#     path('checkout/', views.checkoutView.as_view(), name='checkout'),
+# ]

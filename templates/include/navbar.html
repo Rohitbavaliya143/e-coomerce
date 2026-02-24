@@ -79,27 +79,45 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="fa-solid fa-user"></i>
-                            <span class="d-none d-lg-inline ms-1">Account</span>
+                            {% if user.is_authenticated %}
+                            <span class="d-none d-lg-inline ms-1">
+                                {{ user.first_name }}
+                            </span>
+                            {% else %}
+                            <span class="d-none d-lg-inline ms-1">
+                                Account
+                            </span>
+                            {% endif %}
+
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item fw-bold text-primary" href="#">
-                                    <i class="fa-solid fa-sign-in-alt me-2"></i>Hello, Sign in
+                                <a class="dropdown-item fw-bold text-primary" href="{% url 'login' %}">
+                                    <i class="fa-solid fa-sign-in-alt me-2"></i>
+                                    Hello, Sign in
                                 </a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="{% url 'register' %}"><i class="fa-solid fa-user me-2"></i>Register</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-box me-2"></i>Your
+                            <li><a class="dropdown-item" href="{% url 'register' %}"><i
+                                        class="fa-solid fa-user me-2"></i>Register</a></li>
+                            <li><a class="dropdown-item" href=""><i class="fa-solid fa-box me-2"></i>Your
                                     Orders</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fa-solid fa-heart me-2"></i>Wishlist</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item text-danger" href="#"><i
-                                        class="fa-solid fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                            <li>
+                                <form action="{% url 'logout' %}" method="post" class="m-0 p-0">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="fa-solid fa-sign-out-alt me-2"></i>
+                                        Sign Out
+                                    </button>
+                                </form>
+                            </li>
                         </ul>
                     </li>
 
@@ -110,7 +128,7 @@
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                                 id="cartCount">
-                               {{ cart_counter }}
+                                {{ cart_counter }}
                                 <span class="visually-hidden">items in cart</span>
                             </span>
                         </a>

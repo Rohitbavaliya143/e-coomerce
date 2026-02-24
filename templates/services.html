@@ -2,143 +2,131 @@
 {% load static %}
 
 {% block title %}Our Services - ShopHub{% endblock %}
-
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
 {% block content %}
 
+
 <!-- Hero Section -->
-<section class="services-hero text-white text-center">
-    <div class="container py-5 py-md-6">
-        <h1 class="display-4 fw-bold mb-3">Services We Offer</h1>
-        <p class="lead fs-5 opacity-90 mx-auto" style="max-width: 720px;">
-            Beyond great products — we provide exceptional shopping experience, support, and benefits tailored for you.
-        </p>
-    </div>
-</section>
-
-<!-- Main Services Grid -->
-<section class="py-5 py-lg-6 bg-light">
-    <div class="container">
-
-        <div class="row g-4 g-lg-5">
-
-            <!-- Service Card 1 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="service-card bg-white rounded-4 shadow-xl p-4 p-xl-5 h-100 text-center transition-up">
-                    <div class="icon-circle mb-4 mx-auto">
-                        <i class="bi bi-truck fs-1"></i>
-                    </div>
-                    <h3 class="fw-bold mb-3">Fast & Free Shipping</h3>
-                    <p class="text-muted mb-0">
-                        Free delivery on orders above ₹999. Most orders dispatched within 24 hours. Track your package in real-time.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Card 2 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="service-card bg-white rounded-4 shadow-xl p-4 p-xl-5 h-100 text-center transition-up">
-                    <div class="icon-circle mb-4 mx-auto">
-                        <i class="bi bi-arrow-counterclockwise fs-1"></i>
-                    </div>
-                    <h3 class="fw-bold mb-3">Hassle-Free Returns</h3>
-                    <p class="text-muted mb-0">
-                        15-day no-questions-asked return policy. Easy online return portal. Instant refund or exchange.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Card 3 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="service-card bg-white rounded-4 shadow-xl p-4 p-xl-5 h-100 text-center transition-up">
-                    <div class="icon-circle mb-4 mx-auto">
-                        <i class="bi bi-shield-check fs-1"></i>
-                    </div>
-                    <h3 class="fw-bold mb-3">Secure Shopping</h3>
-                    <p class="text-muted mb-0">
-                        256-bit SSL encryption. Trusted payment gateways. PCI DSS compliant. Your data stays protected.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Card 4 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="service-card bg-white rounded-4 shadow-xl p-4 p-xl-5 h-100 text-center transition-up">
-                    <div class="icon-circle mb-4 mx-auto">
-                        <i class="bi bi-headset fs-1"></i>
-                    </div>
-                    <h3 class="fw-bold mb-3">24×7 Customer Support</h3>
-                    <p class="text-muted mb-0">
-                        Chat, WhatsApp, email & phone support. Average response time under 2 minutes during business hours.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Card 5 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="service-card bg-white rounded-4 shadow-xl p-4 p-xl-5 h-100 text-center transition-up">
-                    <div class="icon-circle mb-4 mx-auto">
-                        <i class="bi bi-gift fs-1"></i>
-                    </div>
-                    <h3 class="fw-bold mb-3">Exclusive Loyalty Rewards</h3>
-                    <p class="text-muted mb-0">
-                        Earn points on every purchase. Redeem for discounts, early access & birthday gifts. VIP tiers available.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Card 6 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="service-card bg-white rounded-4 shadow-xl p-4 p-xl-5 h-100 text-center transition-up">
-                    <div class="icon-circle mb-4 mx-auto">
-                        <i class="bi bi-arrow-left-right fs-1"></i>
-                    </div>
-                    <h3 class="fw-bold mb-3">Easy Exchange Policy</h3>
-                    <p class="text-muted mb-0">
-                        Size/fit/color not right? Exchange within 7 days. Free one-time exchange on eligible products.
-                    </p>
-                </div>
-            </div>
-
+    <header class="services-hero">
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Committed to providing the best shoe shopping experience from click to delivery.</p>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- Trust / Stats Bar -->
-<section class="py-5 bg-white border-top border-bottom">
-    <div class="container">
-        <div class="row text-center g-4 g-md-5">
-
-            <div class="col-6 col-md-3">
-                <div class="fs-1 fw-bold text-teal">10k+</div>
-                <p class="text-muted mb-0">Happy Customers</p>
+    <!-- Main Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>What We Offer</h2>
+                <p>Exclusive services designed for sneakerheads and fashion lovers alike.</p>
             </div>
 
-            <div class="col-6 col-md-3">
-                <div class="fs-1 fw-bold text-teal">4.8/5</div>
-                <p class="text-muted mb-0">Average Rating</p>
-            </div>
+            <div class="row g-4">
+                
+                <!-- Service 1: Free Shipping -->
+                <div class="col-lg-4 col-md-6 fade-up">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <h4>Free Shipping</h4>
+                        <p>Enjoy free standard shipping on all orders over $50. We deliver to your doorstep quickly and safely.</p>
+                        <a href="#" class="service-link">Learn More <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
 
-            <div class="col-6 col-md-3">
-                <div class="fs-1 fw-bold text-teal">15+</div>
-                <p class="text-muted mb-0">Cities Served</p>
-            </div>
+                <!-- Service 2: Easy Returns -->
+                <div class="col-lg-4 col-md-6 fade-up">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </div>
+                        <h4>30-Day Returns</h4>
+                        <p>Not the right fit? No problem. Return your shoes within 30 days for a full refund or exchange.</p>
+                        <a href="#" class="service-link">Return Policy <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
 
-            <div class="col-6 col-md-3">
-                <div class="fs-1 fw-bold text-teal">100%</div>
-                <p class="text-muted mb-0">Secure Payments</p>
-            </div>
+                <!-- Service 3: Size Guide -->
+                <div class="col-lg-4 col-md-6 fade-up">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                        </div>
+                        <h4>Perfect Fit Guide</h4>
+                        <p>Confused about sizing? Use our detailed measurement guide to find your perfect fit every time.</p>
+                        <a href="#" class="service-link">Check Size <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
 
+                <!-- Service 4: Secure Payment -->
+                <div class="col-lg-4 col-md-6 fade-up">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4>Secure Payment</h4>
+                        <p>Shop with peace of mind. We use encrypted SSL technology to protect your personal data.</p>
+                        <a href="#" class="service-link">Security Info <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 5: 24/7 Support -->
+                <div class="col-lg-4 col-md-6 fade-up">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h4>24/7 Support</h4>
+                        <p>Our support team is available around the clock via chat and email to assist you.</p>
+                        <a href="#" class="service-link">Contact Us <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Customization -->
+                <div class="col-lg-4 col-md-6 fade-up">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-paintbrush"></i>
+                        </div>
+                        <h4>Custom Designs</h4>
+                        <p>Want something unique? We offer custom painting and lace swaps for select sneaker models.</p>
+                        <a href="#" class="service-link">Customize Now <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Final CTA -->
-<section class="py-5 py-lg-6 bg-gradient-teal text-white text-center">
-    <div class="container">
-        <h2 class="display-6 fw-bold mb-4">Ready to Shop Worry-Free?</h2>
-        <p class="lead mb-5 opacity-90">Experience the best customer service in online shopping today.</p>
-        </a>
-    </div>
-</section>
+    <!-- Special Feature Section: Shoe Care -->
+    <section class="care-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shoe Cleaning" class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-lg-6 care-content">
+                    <h3>Premium Shoe Care Service</h3>
+                    <p class="text-muted mb-4">
+                        We believe your shoes should look new forever. With every purchase above $100, you get a complimentary shoe care kit and access to our cleaning experts.
+                    </p>
+                    <ul class="list-unstyled care-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Professional Cleaning Tips</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Waterproofing Service</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Sole & Heel Repair Consultation</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Whitening & Polish Services</li>
+                    </ul>
+                    <button class="btn btn-dark mt-4 px-4 py-2">Book a Cleaning</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/services.js' %}"></script>
 {% endblock %}

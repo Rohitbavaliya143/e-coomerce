@@ -78,8 +78,7 @@
                 <span>Total</span>
             <span>{{ grand_total }}</span>
             </div>
-
-            <button class="checkout-btn">Checkout →</button>
+            <a href="{% url 'checkout' %}"><button class="checkout-btn">Checkout →</button></a>
             <a href="#" class="continue-link">← Continue Shopping</a>
         </aside>
 

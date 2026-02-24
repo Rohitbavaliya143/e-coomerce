@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 pt-5 text-center">
+    <h2 class="text-success">🎉 Thank You For Your Order!</h2>
+
+    <div class="card p-4 mt-4">
+        <h5>User Name: {{ order.first_name }} {{ order.last_name }}</h5>
+        <h5>Order Number: {{ order.order_number }}</h5>
+        <p>Total Amount: ₹{{ order.total_price }}</p>
+        <p>Payment Method: {{ order.payment_method }}</p>
+        <p>Status: {{ order.status }}</p>
+    </div>
+
+    <a href="{% url 'store' %}" class="btn btn-primary mt-4">
+        Continue Shopping
+    </a>
+    <a href="{% url 'order_detail' order.order_number %}" class="btn btn-dark mt-3">
+        View Order Details
+    </a>
+</div>
+{% endblock %}

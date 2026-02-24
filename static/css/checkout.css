@@ -1,0 +1,162 @@
+.checkout-wrapper .container {
+    display: block !important;          /* Reset flex from global CSS */
+    max-width: 1140px !important;       /* Reset width from global CSS */
+    background-color: #f4f7f6 !important; /* Clean modern background */
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 65px 0px;
+
+}
+
+/* 2. Layout & Body */
+body {
+    background: linear-gradient(135deg, #fff, #fff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-wrapper {
+    padding-top: 100px; /* Space for fixed navbar */
+    padding-bottom: 50px;
+}
+
+/* 3. Card Styling */
+.checkout-card {
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+/* 4. Form Inputs Styling */
+.form-control, .form-select {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #000000;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.08);
+}
+
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+/* 5. Payment Option Styling */
+.payment-option {
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.payment-option:hover {
+    background-color: #f8f9fa;
+}
+
+.payment-option.active {
+    border-color: #000000 !important;
+    background-color: #fcfcfc;
+}
+
+/* 6. Order Summary Styling */
+.order-summary-sticky {
+    position: sticky;
+    top: 100px; /* Adjust based on navbar height */
+}
+
+.order-summary-item {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 0;
+}
+
+.order-summary-item:last-child {
+    border-bottom: none;
+}
+
+/* Image Wrapper Smaller */
+.item-img-wrapper {
+    position: relative;
+    width: 45px;        /* ↓ smaller */
+    height: 45px;       /* ↓ smaller */
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+
+/* Image Perfect Fit */
+.item-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* better than cover */
+    padding: 4px;
+}
+
+
+.item-qty-badge {
+     position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #000;
+    color: #fff;
+    font-size: 9px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 7. Button Styling */
+.btn-place-order {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-place-order:hover {
+    background-color: #333333;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.secure-badge {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.total-row span {
+    color: #000;
+}
+
+/* 8. Responsive Tweaks */
+@media (max-width: 768px) {
+    .checkout-card {
+        padding: 1.5rem !important;
+    }
+    
+    .order-summary-sticky {
+        position: static; /* Disable sticky on mobile */
+    }
+}
+
+
+.order-summary-item h6 {
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}

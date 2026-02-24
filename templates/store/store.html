@@ -34,14 +34,14 @@
     <br>
 </div>
 <div class="container">
-    <aside class="sidebar">
+    <!-- <aside class="sidebar">
         <ul>
             {% for sidebar in menu_categories %}
             <li><a href="{% url 'products_by_category' sidebar.slug %}">{{ sidebar.category_name }}</a></li>
-            <!-- <li class="active">Watches</li> -->
+           
             {% endfor %}
         </ul>
-    </aside>
+    </aside> -->
 
     <main class="product-grid">
         {% if selected_audience %}
@@ -50,13 +50,21 @@
         </h3>
         {% endif %}
         {% for product in products %}
-        <div class="card">
+        <div class="card1">
             <a href="{{ product.get_url }}" class="img-wrap"><img src="{{ product.images.url }}" alt="Black Watch"></a>
             <div class="card-info">
                 <p>{{ product.product_name }}</p>
                 <p class="price">Rs {{ product.price }}</p>
                 <p>Total stock: {{ product.stock }}</p>
-                <button class="add-btn">Add To Cart</button>
+                {% if product.stock > 0 %}
+                <a href="{% url 'add_cart' product.id %}" class="add-btn">
+                    Add To Cart
+                </a>
+                {% else %}
+                <button class="add-btn disabled" disabled>
+                    Out of Stock
+                </button>
+                {% endif %}
             </div>
         </div>
         {% endfor %}

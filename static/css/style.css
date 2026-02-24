@@ -4,7 +4,7 @@
      /* keeps dropdown above everything */
  }
 
- .container {
+ .container2 {
      display: flex;
      padding: 20px;
      margin: 0px 0px;
@@ -13,7 +13,7 @@
      justify-content: center;
  }
  .container1{
-     max-width: 1200px;      /* page center width */
+    max-width: 1200px;      /* page center width */
     margin: 0 auto;   
     background: cornsilk;      /* center the container */
     padding: 20px;
@@ -48,7 +48,7 @@
  }
 
  .product-grid {
-     flex: 1;
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
@@ -57,15 +57,15 @@
  }
 
 
- .card {
+ .card1 {
      border: 1px solid #eee;
      text-align: left;
      transition: 0.3s;
      width: 224px;
-    height: 331px;
+     height: 391px;
  }
 
- .card img {
+ .card1 img {
      width: 100%;
      height: 200px;
      object-fit: contain;

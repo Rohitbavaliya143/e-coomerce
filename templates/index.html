@@ -34,7 +34,7 @@
     <br>
 </div>
 <div class="category-banner">
-    <h2>SHOP BY PRODUCT</h2>
+    <h2>SHOP BY CATEGORY</h2>
 </div>
 <div class="store-box">
     <ul>
@@ -56,52 +56,20 @@
     </aside> -->
 
     <main class="product-grid">
-        {% for product in products %}
-        <div class="card">
-            <a  href="{{ product.get_url }}" class="img-wrap"><img src="{{ product.images.url  }}" alt="Black Watch"></a>
+        {% for cat in menu_categories %}
+        <div class="card1">
+            <a  href="{% url 'products_by_category' cat.slug %}" class="img-wrap"><img src="{{ cat.cat_image.url  }}" alt="Black Watch"></a>
             <div class="card-info">
-                <a  href="{{ product.get_url }}" class="img-wrap"></a><p>{{ product.product_name }}</p></a>
-                <p class="price">Rs {{ product.price }}</p>
-                <p>Total stock: {{ product.stock }}</p>
+                <a  href="{% url 'products_by_category' cat.slug %}" class="img-wrap"></a><p>{{ cat.category_name }}</p></a>
+                <p class="price">Description: {{ cat.description }}</p>
                 <!-- <button class="add-btn">Add To Cart</button> -->
             </div>
         </div>
         {% endfor %}
-
-        <!--
-            <div class="card">
-                <img src="{% static 'images/product_image/cat4.jpg' %}" alt="Casio Analog">
-                <div class="card-info">
-                    <p>Casio Analog</p>
-                    <p class="price">Rs 1000</p>
-                    <button class="add-btn">Add To Cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="{% static 'images/product_image/cat4.jpg' %}" alt="Combo Watches">
-                <div class="card-info">
-                    <p>Combo watches</p>
-                    <p class="price">Rs 500</p>
-                    <del class="origional-price">Rs.799</del>
-                    <span class="discount-badge ms-2">78% OFF</span>
-                    <button class="add-btn">Add To Cart</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{% static 'images/product_image/cat4.jpg' %}" alt="Combo Watches">
-                <div class="card-info">
-                    <p>Combo watches</p>
-                    <p class="price">Rs.500</p>
-                    <del class="origional-price">Rs.799</del>
-                    <p class="discount-badge">78% OFF</p>
-                    <button class="add-btn">Add To Cart</button>
-                </div>
-            </div> -->
     </main>
 
 </div>
-<div class="container">
+<div class="container2">
     <p class="pull-right"><a href="#">Bakc To Home</a></p>
 </div>
 <section class="features">

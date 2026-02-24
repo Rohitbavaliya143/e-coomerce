@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'accounts',
     'store',
     'cart',
+    'order',
+    'jazzmin',
 ]
 
 MIDDLEWARE = [
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -129,6 +131,10 @@ STATICFILES_DIRS = [
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/ 'media'
+
+LOGIN_URL="/login/"
+LOGIN_REDIRECT_URL="/checkout/"
+LOGOUT_REDIRECT_URL="/login/"
 
 DEBUG = True
 

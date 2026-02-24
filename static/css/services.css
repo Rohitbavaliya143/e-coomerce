@@ -1,0 +1,203 @@
+:root {
+            --primary-color: #0d6efd; /* Cool Blue for trust */
+            --accent-color: #ffc107; /* Amber for highlights */
+            --dark-color: #111111;
+            --text-color: #555555;
+            --light-bg: #f8f9fa;
+            --card-radius: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- NAVBAR --- */
+        .top-nav {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .top-nav .logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            text-decoration: none;
+        }
+        .top-nav .logo span { color: var(--primary-color); }
+        .top-nav .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .top-nav .nav-links a:hover { color: var(--primary-color); }
+
+        /* --- HERO SECTION --- */
+        .services-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* --- SERVICE CARDS --- */
+        .services-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        .section-title p {
+            color: #777;
+            max-width: 600px;
+            margin: 15px auto 0;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: var(--card-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Hover Effect */
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+
+        .icon-box {
+            width: 90px;
+            height: 90px;
+            background: rgba(13, 110, 253, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+        .icon-box i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .service-card:hover .icon-box {
+            background: var(--primary-color);
+        }
+        .service-card:hover .icon-box i {
+            color: #fff;
+        }
+
+        .service-card h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: var(--dark-color);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .service-card:hover .service-link {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+
+        /* --- SPECIAL SERVICE: SHOE CARE --- */
+        .care-section {
+            padding: 80px 0;
+        }
+        .care-content h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .care-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .care-list li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: var(--dark-color);
+            color: #ccc;
+            padding: 50px 0 20px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover { color: var(--primary-color); }
+
+        /* Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }

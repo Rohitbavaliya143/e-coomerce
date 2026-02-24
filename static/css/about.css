@@ -1,139 +1,180 @@
-/* Hero Section */
-.about-hero {
-    /* background image if you want, uncomment next line */
-    /* background: url('../images/about-hero.jpg') center/cover no-repeat; */
-    padding: 100px 0;
-    text-align: center;
-    color: white;
-}
+ :root {
+            --primary-color: #d63384; /* Pink/Magenta accent */
+            --dark-color: #111111;
+            --light-bg: #f9f9f9;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
 
-.about-hero h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+ 
+ 
+ 
+ 
+ 
+ 
+ /* 1. Top Navbar */
+        .top-nav {
+            background-color: var(--dark-color);
+            padding: 15px 0;
+        }
+        .top-nav .logo {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        .top-nav .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .top-nav .nav-links a:hover {
+            color: #fff;
+        }
 
-.about-hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto;
-}
+        /* 2. Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-title span {
+            color: var(--primary-color);
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease;
+        }
 
-/* Brand Story / Mission Section */
-.brand-story {
-    padding: 80px 20px;
-    text-align: center;
-    background: #f9f9f9;
-}
+        /* 3. About Content Section */
+        .content-section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
 
-.brand-story h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
+        /* 4. Info Cards (The grid from your image) */
+        .info-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            padding: 40px 30px;
+            height: 100%;
+            transition: transform 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+        .info-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--primary-color);
+        }
+        .info-card h4 {
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-card ul li {
+            margin-bottom: 12px;
+        }
+        .info-card ul li a {
+            color: #555;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .info-card ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        .info-card ul li i {
+            width: 25px;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
 
-.brand-story p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
+        /* 5. Contact Card Specifics */
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .contact-info li i {
+            margin-top: 5px;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
 
-/* Mission & Vision Section */
-.mission-vision {
-    padding: 80px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        /* 6. Store Description Box */
+        .store-desc-box {
+            background: var(--dark-color);
+            color: #fff;
+            padding: 60px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .store-desc-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 150px;
+            opacity: 0.1;
+            font-family: serif;
+        }
+        .store-desc-box h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
-.mission-vision div {
-    flex: 1 1 300px;
-    background: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.mission-vision h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-/* Team Section */
-.team {
-    padding: 80px 20px;
-    background: #f9f9f9;
-}
-
-.team h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 50px;
-}
-
-.team .team-member {
-    flex: 1 1 250px;
-    text-align: center;
-}
-
-.team .team-member img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-}
-
-/* Achievements Section */
-.achievements {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.achievements h2 {
-    font-size: 2rem;
-    margin-bottom: 50px;
-}
-
-.achievements div {
-    flex: 1 1 200px;
-}
-
-/* CTA Section */
-.cta {
-    background: #ff6f61;
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
-    margin-top: 50px;
-    border-radius: 10px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.cta a {
-    padding: 15px 35px;
-    background: #fff;
-    color: #ff6f61;
-    font-weight: bold;
-    border-radius: 50px;
-    text-decoration: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .mission-vision,
-    .team,
-    .achievements {
-        flex-direction: column;
-    }
-
-    .team .team-member,
-    .mission-vision div,
-    .achievements div {
-        margin-bottom: 30px;
-    }
-}
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
