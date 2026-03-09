@@ -1,26 +1,39 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Account
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate,login as auth_login
+from django.contrib.auth.decorators import login_required
+from .forms import ContactForm
 from .forms import RegistrationForm
 from cart.models import Cart,CartItem
 import uuid
-
+from .forms import EditProfileForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from order.models import Order
 
 def register(request):
+
     if request.method == "POST":
         form = RegistrationForm(request.POST)
+
         if form.is_valid():
             user = form.save(commit=False)
+
             user.set_password(form.cleaned_data['password'])
             user.is_active = True
             user.save()
+
             messages.success(request, "Account created successfully")
-            # return redirect('login')
+
+            # redirect to login page
+            return redirect('login')
+
         else:
             messages.error(request, "Please correct the errors below.")
+
     else:
         form = RegistrationForm()
 
@@ -116,3 +129,91 @@ def logout(request):
     logout(request)
     return redirect('home')
 
+
+def contact(request):
+
+    if request.method == "POST":
+
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            messages.success(request,"✅ Your message has been sent successfully!")
+
+            return redirect('contact')
+
+        else:
+            messages.error(request,"❌ Please correct the errors below.")
+
+    else:
+        form = ContactForm()
+
+    return render(request,'contact.html',{'form':form})
+
+@login_required
+def dashboard(request):
+    return render(request,'accounts/dashboard.html')
+
+@login_required
+def edit_profile(request):
+
+    if request.method == "POST":
+
+        form = EditProfileForm(request.POST,instance=request.user)
+
+        if form.is_valid():
+
+            form.save()
+
+            messages.success(request,"Profile updated successfully")
+
+            return redirect('dashboard')
+
+    else:
+
+        form = EditProfileForm(instance=request.user)
+
+    return render(request,'accounts/edit_profile.html',{'form':form})
+
+@login_required
+def change_password(request):
+
+    if request.method == "POST":
+
+        form = PasswordChangeForm(request.user,request.POST)
+
+        if form.is_valid():
+
+            user = form.save()
+
+            update_session_auth_hash(request,user)
+
+            messages.success(request,"Password changed successfully")
+
+            return redirect('dashboard')
+
+    else:
+
+        form = PasswordChangeForm(request.user)
+
+    return render(request,'accounts/change_password.html',{'form':form})
+
+
+
+@login_required
+def my_orders(request):
+
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+
+    return render(request,'accounts/my_orders.html',{'orders':orders})
+
+
+
+@login_required
+def order_detail(request,order_id):
+
+    order = get_object_or_404(Order,id=order_id,user=request.user)
+
+    return render(request,'accounts/order_detail.html',{'order':order})

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Detail {{ order.order_number }}{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4" style="margin-top:100px;">
+    <div class="row">
+
+        <!-- Sidebar (Left Column) -->
+        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+            {% include 'accounts/sidebar.html' %}
+        </div>
+        <!-- Additional Info (જો તમારા મોડેલમાં હોય તો ઉમેરો) -->
+        <div class="col-md-8">
+            <div class="bg-light p-4 rounded-3 border h-100">
+                <h6 class="fw-bold text-uppercase mb-3">Shipping & Payment</h6>
+                <p class="mb-2">
+                    <!-- Shipping address જો modelમાં હોય તો -->
+                    <strong>Shipping Address:</strong>
+                    {% if order.shipping_address %}{{ order.shipping_address }}{% else %}N/A{% endif %}
+                </p>
+                <p class="mb-2">
+                    <strong>Payment Method:</strong>
+                    {% if order.payment_method %}{{ order.payment_method }}{% else %}N/A{% endif %}
+                </p>
+                <p class="mb-0">
+                    <strong>Payment Status:</strong>
+                    <span class="badge bg-info">{{ order.payment_status|default:"Pending" }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Items Table -->
+    <h5 class="mb-3">Order Items</h5>
+
+    {% if order.items.exists %}
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col" class="text-end">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <!-- જો product image હોય તો -->
+                            {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="60"
+                                class="me-3 rounded">
+                            {% endif %}
+                            <div>
+                                <strong>{{ item.product.name }}</strong>
+                                <small class="text-muted d-block">SKU: {{ item.product.sku|default:"N/A" }}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>₹{{ item.price|floatformat:2 }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td class="text-end fw-bold">₹{{ item.subtotal|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr class="border-top">
+                    <td colspan="3" class="text-end fw-bold">Total:</td>
+                    <td class="text-end fs-5 fw-bold text-primary">₹{{ order.order_total|floatformat:2 }}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
+        <p class="text-muted">No items found in this order.</p>
+    </div>
+    {% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -60,6 +60,9 @@
                 <a href="{% url 'add_cart' product.id %}" class="add-btn">
                     Add To Cart
                 </a>
+                <a href="{% url 'add_wishlist' product.id %}" class="btn btn-outline-danger mt-3">
+                    ❤️ Add To Wishlist
+                </a>
                 {% else %}
                 <button class="add-btn disabled" disabled>
                     Out of Stock

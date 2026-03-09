@@ -17,7 +17,8 @@ body {
     background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
     min-height: 100vh;
     margin: 0;
-    padding-top: 100px !important;   /* ← change to 110–130px if navbar is taller */
+    padding-top: 100px !important;
+    /* ← change to 110–130px if navbar is taller */
     color: var(--gray-900);
 }
 
@@ -32,7 +33,7 @@ body {
 .container {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
     overflow: hidden;
     width: 100%;
     max-width: 500px;
@@ -54,7 +55,7 @@ body {
     line-height: 1.1;
 }
 
-.header h1 + h1 {
+.header h1+h1 {
     font-size: 1.6rem;
     font-weight: 500;
     margin: 0.3rem 0 0.8rem;
@@ -160,10 +161,27 @@ body {
     .form-content {
         padding: 1.8rem 1.6rem 2.4rem;
     }
+
     .header {
         padding: 2.4rem 1.6rem 1.8rem;
     }
+
     body {
         padding-top: 90px !important;
     }
+}
+
+.error-text {
+    color: #e11d48;
+    font-size: 13px;
+    margin-top: 4px;
+    display: block;
+}
+
+.error-box {
+    background: #ffe4e6;
+    color: #be123c;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
 }

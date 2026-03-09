@@ -9,5 +9,5 @@ class category(models.Model):
     def __str__(self):
         return self.category_name
     class Meta:
-        verbose_name='category',
+        verbose_name='category',    
         verbose_name_plural='categories'

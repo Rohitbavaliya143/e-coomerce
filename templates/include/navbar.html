@@ -1,145 +1,152 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+<nav class="navbar navbar-expand-lg custom-navbar fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo/third.png' %}" height="60" width="70" alt="Logo" class="Logo" />
+        </a>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Document</title>
-</head>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<body>
-    <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="{% static 'images/logo/third.png' %}" height="60" width="70" alt="Logo" class="Logo" />
-            </a>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- ALL PRODUCT DROPDOWN -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        All Category
+                    </a>
 
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <ul class="dropdown-menu">
+                        {% for cat in menu_categories %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products_by_category' cat.slug %}">
+                                {{ cat.category_name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
 
-                    <!-- ALL PRODUCT DROPDOWN -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            All Category
-                        </a>
+                <!-- NORMAL MENU ITEMS -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                </li>
 
-                        <ul class="dropdown-menu">
-                            {% for cat in menu_categories %}
-                            <li>
-                                <a class="dropdown-item" href="{% url 'products_by_category' cat.slug %}">
-                                    {{ cat.category_name }}
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
+                </li>
 
-                    <!-- NORMAL MENU ITEMS -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">CONTACTUS</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'services1' %}">SERVICES</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">CONTACTUS</a>
-                    </li>
+            </ul>
+            <ul class="dropdown-menu">
+                {% for cat in menu_categories %}
+                <li><a class="dropdown-item" href="{% url 'products_by_category' cat.slug %}">{{
+                        cat.category_name }}</a></li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'services1' %}">SERVICES</a>
-                    </li>
-
-                </ul>
-                <ul class="dropdown-menu">
-                    {% for cat in menu_categories %}
-                    <li><a class="dropdown-item" href="{% url 'products_by_category' cat.slug %}">{{
-                            cat.category_name }}</a></li>
-
-                    <!-- <li>
+                <!-- <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                    {% endfor %}
-                </ul>
+                {% endfor %}
+            </ul>
+            </li>
+            </ul>
+            <ul class="navbar-nav">
+                <!-- Account Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-user"></i>
+                        {% if user.is_authenticated %}
+                        <span class="d-none d-lg-inline ms-1">
+                            {{ user.first_name }}
+                        </span>
+                        {% else %}
+                        <span class="d-none d-lg-inline ms-1">
+                            Account
+                        </span>
+                        {% endif %}
+
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item fw-bold text-primary" href="{% url 'login' %}">
+                                <i class="fa-solid fa-sign-in-alt me-2"></i>
+                                Hello, Sign in
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'register' %}"><i
+                                    class="fa-solid fa-user me-2"></i>Register</a></li>
+                        <!-- <li><a class="dropdown-item" href=""><i class="fa-solid fa-box me-2"></i>Your
+                                Orders</a></li> -->
+                        {% if request.user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'wishlist' %}"><i
+                                    class="fa-solid fa-heart me-2"></i>Wishlist</a>
+                        </li>
+                        {% else %}
+                         <li><a class="dropdown-item" href="{% url 'login' %}"><i
+                                    class="fa-solid fa-heart me-2"></i>Wishlist</a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post" class="m-0 p-0">
+                                {% csrf_token %}
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="fa-solid fa-sign-out-alt me-2"></i>
+                                    Sign Out
+                                </button>
+                            </form>
+                        </li>
+                        <li class="nav-item ms-2">
+                            <a class="nav-link d-flex align-items-center fw-bold" style="color:#212529;"
+                                href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}?next={% url 'dashboard' %}{% endif %}">
+
+                                <i class="fa-solid fa-user me-2"></i>
+
+                                {% if user.is_authenticated %}
+                                <span class="d-none d-lg-inline">
+                                   My Profile
+                                </span>
+                                {% else %}
+                                <span class="d-none d-lg-inline">
+                                    My Profile
+                                </span>
+                                {% endif %}
+
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <!-- Account Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-user"></i>
-                            {% if user.is_authenticated %}
-                            <span class="d-none d-lg-inline ms-1">
-                                {{ user.first_name }}
-                            </span>
-                            {% else %}
-                            <span class="d-none d-lg-inline ms-1">
-                                Account
-                            </span>
-                            {% endif %}
 
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item fw-bold text-primary" href="{% url 'login' %}">
-                                    <i class="fa-solid fa-sign-in-alt me-2"></i>
-                                    Hello, Sign in
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'register' %}"><i
-                                        class="fa-solid fa-user me-2"></i>Register</a></li>
-                            <li><a class="dropdown-item" href=""><i class="fa-solid fa-box me-2"></i>Your
-                                    Orders</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-heart me-2"></i>Wishlist</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li>
-                                <form action="{% url 'logout' %}" method="post" class="m-0 p-0">
-                                    {% csrf_token %}
-                                    <button type="submit" class="dropdown-item text-danger">
-                                        <i class="fa-solid fa-sign-out-alt me-2"></i>
-                                        Sign Out
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Shopping Cart -->
-                    <li class="nav-item">
-                        <a class="nav-link position-relative" href="{% url 'cart' %}" title="Shopping Cart">
-                            <i class="fa-solid fa-cart-shopping fa-lg"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                id="cartCount">
-                                {{ cart_counter }}
-                                <span class="visually-hidden">items in cart</span>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <!-- Shopping Cart -->
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="{% url 'cart' %}" title="Shopping Cart">
+                        <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            id="cartCount">
+                            {{ cart_counter }}
+                            <span class="visually-hidden">items in cart</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav>
-
-    <!-- Navbar End -->
-</body>
-
-</html>
-<!-- OUR NAVBAR HERE   -->
+    </div>
+</nav>

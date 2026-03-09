@@ -1,237 +1,320 @@
- .navbar {
-     width: 100%;
-     z-index: 9999;
-     /* keeps dropdown above everything */
- }
+/* =========================
+   NAVBAR
+========================= */
 
- .container2 {
-     display: flex;
-     padding: 20px;
-     margin: 0px 0px;
-     max-width: 100% !important;
-     background: cornsilk;
-     justify-content: center;
- }
- .container1{
-    max-width: 1200px;      /* page center width */
-    margin: 0 auto;   
-    background: cornsilk;      /* center the container */
-    padding: 20px;
- }
-.custom-navbar {
-    background-color: #ac1818;
-    color: #dee2e6;   /* any color */
-}
-.navbar .nav-link {
-    color: white;        /* your color */
+.navbar{
+    width:100%;
+    z-index:9999;
 }
 
- .sidebar {
-     width: 400px;
-     border-right: 1px solid #ddd;
- }
+.custom-navbar{
+    background-color:#ac1818;
+}
 
- .sidebar ul {
-     list-style: none;
- }
+.navbar .nav-link{
+    color:white;
+}
 
- .sidebar li {
-     padding: 12px;
-     border: 1px solid #eee;
-     cursor: pointer;
-     color: #000;
- }
-
- .sidebar li:hover {
-     background-color: #f9f9f9;
-     color: #000;
- }
-
- .product-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    
- }
+.Logo{
+    height:60px;
+    width:auto;
+}
 
 
- .card1 {
-     border: 1px solid #eee;
-     text-align: left;
-     transition: 0.3s;
-     width: 224px;
-     height: 391px;
- }
+/* =========================
+   PAGE LAYOUT
+========================= */
 
- .card1 img {
-     width: 100%;
-     height: 200px;
-     object-fit: contain;
-     background: #fff;
-     transition: transform 0.4s ease;
- }
-
- .card-info {
-     padding: 15px;
- }
-
- .price {
-     font-weight: bold;
-     margin: 10px 0;
- }
-
- .add-btn {
-     width: 100%;
-     padding: 10px;
-     background-color: #28a745;
-     color: white;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-     font-size: 16px;
- }
-
- .add-btn:hover {
-     background-color: #218838;
- }
 .page-shift{
-    margin-top: 13vh;
-}
-.store-box ul {
-    margin-left: 39px;
-}
-.store-box ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-    width: 15%;
-    background-color: darkred;
-    padding: 10px;
+    margin-top:13vh;
 }
 
-.store-box a {
-    color: aliceblue;
-    font-size: larger;
-    text-decoration: none;
+.container1{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.container2{
+    display:flex;
+    justify-content:center;
+    padding:20px;
+    max-width:100%;
+    background:cornsilk;
 }
 
 
+/* =========================
+   SIDEBAR
+========================= */
 
- .carousel {
-    position: relative;
-    z-index: 1;
-
- }
-
- h1 {
-     top: 34vh;
- }
-
- a {
-     color: #212529;
-     text-decoration: blink;
- }
-
- .filter-badge {
-     background: #e9ecef;
-     border: 1px solid #dee2e6;
-     border-radius: 8px;
-     padding: 8px 12px;
-     font-size: 0.9rem;
- }
-
- .card-body {
-     cursor: pointer;
- }
-
- .Logo {
-     height: 60px;
-     width: auto;
- }
-.category-banner {
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to right, #fff6c3, #fef2a8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    margin: 30px 0;
+.sidebar{
+    width:250px;
+    border-right:1px solid #ddd;
 }
 
-.category-banner h2 {
-    color: #00ff80;
-    font-size: 40px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 0;
+.sidebar ul{
+    list-style:none;
+    padding:0;
 }
- /* Active/current link */
- .sidebar a.active {
-     background-color: #04AA6D;
-     color: white;
- }
 
- /* Links on mouse-over */
- .sidebar a:hover:not(.active) {
-     background-color: #555;
-     color: white;
- }
+.sidebar li{
+    padding:12px;
+    border:1px solid #eee;
+    cursor:pointer;
+}
 
- /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
- div.content {
-     margin-left: 400px;
-     padding: 1px 16px;
-     height: 1000px;
- }
+.sidebar li:hover{
+    background:#f9f9f9;
+}
 
- .card {
-     overflow: hidden;
- }
+.sidebar a{
+    text-decoration:none;
+    color:#000;
+}
 
- .card img:hover {
-     transform: scale(1.1);
- }
+.sidebar a.active{
+    background:#04AA6D;
+    color:white;
+}
 
- /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
- @media screen and (max-width: 400px) {
-     .sidebar a {
-         text-align: center;
-         float: none;
-     }
- }
 
- /* sidebar responsive navbar css*/
- @media (max-width: 400px) {
-     .footer-shift {
-         margin-left: 0;
-         width: 100%;
-         height: 100%;
-     }
+/* =========================
+   PRODUCT GRID
+========================= */
 
-     .footer-shift {
-         margin-left: 200px;
-         width: calc(100% - 200px);
-     }
- }
+.product-grid{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:25px;
+    padding:20px;
+}
 
- @media (max-width: 380px) {
-     .sidebar {
-         width: 85px;
 
-     }
+/* =========================
+   PRODUCT CARD
+========================= */
 
-     .page-shift {
-         margin-left: 86px;
-         width: calc(130.5% - 200px);
-     }
+.card1{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #e6e6e6;
+    transition:all 0.3s ease;
+    display:flex;
+    flex-direction:column;
+}
 
-     .footer-shift {
-         margin-left: 86px;
-         width: calc(130.5% - 200px);
-     }
- }
+.card1:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.card1 img{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+    padding:15px;
+    background:#fff;
+    transition:transform 0.4s ease;
+}
+
+.card1:hover img{
+    transform:scale(1.08);
+}
+
+
+/* =========================
+   CARD INFO
+========================= */
+
+.card-info{
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+}
+
+.product-name{
+    font-weight:600;
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.price{
+    font-size:18px;
+    font-weight:700;
+    color:#28a745;
+    margin-bottom:8px;
+}
+
+
+/* =========================
+   STOCK TEXT
+========================= */
+
+.card-info p{
+    margin:3px 0;
+    font-size:14px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.add-btn{
+    width:100%;
+    padding:10px;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+    margin-top:10px;
+}
+
+.add-btn:hover{
+    background:#218838;
+}
+
+.btn-outline-danger{
+    width:100%;
+    margin-top:10px;
+    border-radius:6px;
+}
+
+.add-btn.disabled{
+    background:gray;
+    cursor:not-allowed;
+}
+
+
+/* =========================
+   CAROUSEL
+========================= */
+
+.carousel{
+    position:relative;
+    z-index:1;
+}
+
+
+/* =========================
+   CATEGORY BANNER
+========================= */
+
+.category-banner{
+    width:100%;
+    height:120px;
+    background:linear-gradient(to right,#fff6c3,#fef2a8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:4px;
+    margin:30px 0;
+}
+
+.category-banner h2{
+    color:#00ff80;
+    font-size:40px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin:0;
+}
+
+
+/* =========================
+   STORE FILTER BOX
+========================= */
+
+.store-box ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    border:1px solid black;
+    width:15%;
+    background-color:darkred;
+    padding:10px;
+    margin-left:39px;
+}
+
+.store-box a{
+    color:aliceblue;
+    font-size:larger;
+    text-decoration:none;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+a{
+    color:#212529;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+
+/* =========================
+   FILTER BADGE
+========================= */
+
+.filter-badge{
+    background:#e9ecef;
+    border:1px solid #dee2e6;
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:0.9rem;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+.product-grid{
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+}
+
+.card1 img{
+    height:180px;
+}
+
+}
+
+@media(max-width:480px){
+
+.product-grid{
+    grid-template-columns:1fr;
+}
+
+.sidebar{
+    display:none;
+}
+
+.page-shift{
+    margin-top:10vh;
+}
+
+}

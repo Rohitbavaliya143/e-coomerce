@@ -1,0 +1,20 @@
+.wishlist-card {
+        transition: all 0.25s ease;
+        border-radius: 12px;
+    }
+    .wishlist-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.08) !important;
+    }
+    .line-clamp-2 {
+        display: -webkit-box;
+       
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .placeholder-image {
+        font-size: 3.5rem;
+    }
+.container{
+    margin-top: 7rem !important;
+}

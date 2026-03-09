@@ -1,74 +1,208 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home1.css' %}">
+{% endblock %}
 {% block content %}
-<div class="page-shift">
-    <div id="carouselExampleAutoplaying" class="carousel slide mt-55px" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'images/sale_image1.jpeg' %}" class="d-block w-100" alt="sale1" height="400"
-                    width="800" title="1" />
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'images/sale_image2.jpeg' %}" class="d-block w-100" alt="sal2" height="400"
-                    width="800" title="2" />
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'images/sale_image4.jpeg' %}" class="d-block w-100" alt="sale3" height="400"
-                    width="800" title="3" />
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+<div id="heroCarousel" class="carousel slide hero-slider" data-bs-ride="carousel" data-bs-interval="5000">
+
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
 
-    <br>
-    <hr>
-    <br>
-</div>
-<div class="category-banner">
-    <h2>SHOP BY CATEGORY</h2>
-</div>
-<div class="store-box">
-    <ul>
-        <li><a class="storebutton" href="{% url 'pdetail' %}">Stores</a></li>
-    </ul>
-</div>
-<div class="container1">
-    <!-- <aside class="sidebar">
-        <ul> -->
-             <!-- {% for cat in menu_categories %}
-            <li><a  href="{% url 'products_by_category' cat.slug %}">{{ cat.category_name }}</a></li> -->
-            <!-- <li>Women-Clothing</li>
-            <li>Men-Clothing</li>
-            <li class="active">Watches</li>
-            <li>Shoes & Handbags</li>
-            <li>Books</li> -->
-            <!-- {% endfor %}
-        </ul>
-    </aside> -->
+    <div class="carousel-inner">
 
-    <main class="product-grid">
-        {% for cat in menu_categories %}
-        <div class="card1">
-            <a  href="{% url 'products_by_category' cat.slug %}" class="img-wrap"><img src="{{ cat.cat_image.url  }}" alt="Black Watch"></a>
-            <div class="card-info">
-                <a  href="{% url 'products_by_category' cat.slug %}" class="img-wrap"></a><p>{{ cat.category_name }}</p></a>
-                <p class="price">Description: {{ cat.description }}</p>
-                <!-- <button class="add-btn">Add To Cart</button> -->
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <!-- Background Image -->
+            <div class="slide-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1556906781-9a412961c28c?q=80&w=2070&auto=format&fit=crop');">
+            </div>
+
+            <div class="container slide-content">
+                <div class="row w-100">
+                    <div class="col-lg-6">
+                        <div class="slide-text">
+                            <span class="slide-subtitle">New Collection 2024</span>
+                            <h1 class="slide-title">Step Into <span>Future</span></h1>
+                            <p class="slide-desc">Experience next-generation comfort with our latest running series.
+                                Engineered for performance, designed for style.</p>
+                            <div class="slide-btns">
+                                <button class="btn btn-accent">Explore Now</button>
+                                <button class="btn btn-outline-light-custom">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="slide-image-container">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop"
+                                class="product-shoe-img" alt="Red Running Shoe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Tags -->
+            <div class="floating-tag tag-top-right">
+                <p>Starting at</p>
+                <h5>$189.00</h5>
+            </div>
+            <div class="floating-tag tag-bottom-right">
+                <p>Material</p>
+                <h5>Flyknit Mesh</h5>
             </div>
         </div>
-        {% endfor %}
-    </main>
 
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <!-- Background Image -->
+            <div class="slide-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=2070&auto=format&fit=crop');">
+            </div>
+
+            <div class="container slide-content">
+                <div class="row w-100">
+                    <div class="col-lg-6">
+                        <div class="slide-text">
+                            <span class="slide-subtitle">Premium Casual</span>
+                            <h1 class="slide-title">Urban <span>Style</span></h1>
+                            <p class="slide-desc">Redefine your street presence with our exclusive urban collection.
+                                Minimalist design, maximum impact.</p>
+                            <div class="slide-btns">
+                                <button class="btn btn-accent">Shop Casual</button>
+                                <button class="btn btn-outline-light-custom">Lookbook</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="slide-image-container">
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1000&auto=format&fit=crop"
+                                class="product-shoe-img" alt="Casual Shoe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating-tag tag-top-right">
+                <p>Category</p>
+                <h5>Lifestyle</h5>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <!-- Background Image -->
+            <div class="slide-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=2070&auto=format&fit=crop');">
+            </div>
+
+            <div class="container slide-content">
+                <div class="row w-100">
+                    <div class="col-lg-6">
+                        <div class="slide-text">
+                            <span class="slide-subtitle">Limited Edition</span>
+                            <h1 class="slide-title">Sport <span>Lux</span></h1>
+                            <p class="slide-desc">High-performance sports gear meets luxury aesthetics. Limited
+                                quantities available.</p>
+                            <div class="slide-btns">
+                                <button class="btn btn-accent">Pre-Order</button>
+                                <button class="btn btn-outline-light-custom">Notify Me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="slide-image-container">
+                            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=1000&auto=format&fit=crop"
+                                class="product-shoe-img" alt="Sports Shoe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating-tag tag-bottom-right">
+                <p>Status</p>
+                <h5>Sold Out</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+<br>
+<hr>
+<br>
+</div>
+<!-- Category Section Start -->
+<!-- Category Section Start -->
+<section class="category-section">
+    <div class="container">
+
+        <div class="section-header text-center mb-5">
+            <span class="sub-title">Our Collections</span>
+            <h2 class="main-title">Shop by <span>Category</span></h2>
+            <p class="section-desc">
+                Find your perfect pair from our curated collections designed for every occasion and style.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            {% for cat in menu_categories %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+
+                <div class="category-card">
+
+                    <!-- Image Click -->
+                    <div class="cat-img-box">
+                        <a href="{% url 'products_by_category' cat.slug %}">
+                            <img src="{{ cat.cat_image.url }}" alt="{{ cat.category_name }}">
+                        </a>
+                        <div class="cat-overlay"></div>
+                    </div>
+
+                    <div class="cat-content">
+
+                        <!-- Name Click -->
+                        <h3 class="cat-title">
+                            <a href="{% url 'products_by_category' cat.slug %}">
+                                {{ cat.category_name }}
+                            </a>
+                        </h3>
+
+                        <span class="cat-count">
+                            {{ cat.description|truncatewords:6 }}
+                        </span>
+
+                        <!-- Button Click -->
+                        <a href="{% url 'products_by_category' cat.slug %}" class="cat-link">
+                            Shop Now <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+<!-- Category Section End -->
+
 <div class="container2">
     <p class="pull-right"><a href="#">Bakc To Home</a></p>
 </div>

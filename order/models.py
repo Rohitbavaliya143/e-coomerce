@@ -34,8 +34,25 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def save(self, *args, **kwargs):
+
+        # order_number generate
         if not self.order_number:
             self.order_number = "ORD" + str(uuid.uuid4().hex[:8]).upper()
+
+        # -------- STOCK RETURN LOGIC ----------
+        if self.pk:
+            old_order = Order.objects.get(pk=self.pk)
+
+            # Cancel detect
+            if old_order.status != 'Cancelled' and self.status == 'Cancelled':
+
+                order_products = self.orderproduct_set.all()
+
+                for item in order_products:
+                    product = item.product
+                    product.stock += item.quantity
+                    product.save()
+
         super().save(*args, **kwargs)
 
     def __str__(self):

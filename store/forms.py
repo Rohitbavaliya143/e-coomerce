@@ -21,6 +21,47 @@ class OrderForm(forms.ModelForm):
         })
     )
 
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+
+        if not phone.isdigit():
+            raise forms.ValidationError("Phone number must contain only digits")
+
+        if len(phone) != 10:
+            raise forms.ValidationError("Phone number must be 10 digits")
+
+        return phone
+    
+
+    def clean_pincode(self):
+        pincode = self.cleaned_data.get('pincode')
+
+        if not pincode.isdigit():
+            raise forms.ValidationError("Pincode must contain only digits")
+
+        if len(pincode) != 6:
+            raise forms.ValidationError("Pincode must be 6 digits")
+
+        return pincode
+    
+
+    def clean_state(self):
+        state = self.cleaned_data.get('state')
+
+        if state == '':
+            raise forms.ValidationError("Please select a state")
+
+        return state
+    
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if "@" not in email:
+            raise forms.ValidationError("Enter valid email")
+
+        return email
+    
     
     class Meta:
         model = Order
