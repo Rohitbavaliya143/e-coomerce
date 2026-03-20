@@ -11,6 +11,7 @@ urlpatterns=[
     path('edit-profile/',views.edit_profile,name='edit_profile'),
     path('change-password/',views.change_password,name='change_password'),
     path('my-orders/',views.my_orders,name='my_orders'),
-    path('order-detail/<int:order_id>/',views.order_detail,name='order_detail'),
-    
+    # path('order/<str:order_number>/', views.order_detail, name='order_detail'),
+    path('cancel-order/<str:order_number>/', views.cancel_order, name='cancel_order'),
+    path('<slug:category_slug>/<slug:product_slug>/',views.product_detail, name='product_detail'),
 ]

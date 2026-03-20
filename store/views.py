@@ -6,7 +6,7 @@ from cart.models import CartItem
 from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
-from cart.views import get_current_cart
+from cart.views import get_current_cart,cart
 from .forms import OrderForm
 from django.db import transaction
 
@@ -47,6 +47,7 @@ def product_detail(request, category_slug,product_slug):
     # context = {
     #     'product': product,
     # }
+    
     try:
         single_product=Product.objects.get(category__slug=category_slug,slug=product_slug)
     except Exception as e:

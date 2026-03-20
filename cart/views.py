@@ -8,6 +8,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from .utils import get_or_create_cart_id
 from .utils import get_cart_id
+from django.contrib import messages
 
 
 def get_current_cart(request):
@@ -69,11 +70,17 @@ def add_cart(request, product_id):
         # First time adding
         if quantity <= product.stock:
             cart_item.quantity = quantity
+        else:
+            messages.error(request,f"⚠️ Only {product.stock } items available for '{ product.product_name }' ")
+            return redirect('cart')
     else:
         # Already exists → add selected quantity
         new_quantity = cart_item.quantity + quantity
         if new_quantity <= product.stock:
             cart_item.quantity = new_quantity
+        else:
+            messages.error(request, f"⚠️ Only {product.stock } items available for '{ product.product_name }' ")
+            return redirect('cart')
 
     cart_item.save()
 
@@ -203,8 +210,16 @@ class checkoutView(LoginRequiredMixin, View):
         }
         return render(request,"store/checkout.html",context)
 
+def check(request):
+    return render(request,"store/checkout.html")
 
+def product_detail25(request, category_slug, product_slug):
+    single_product = Product.objects.get(category__slug=category_slug, slug=product_slug)
 
+    context = {
+        'single_product': single_product,
+    }
 
+    return render(request, 'productdetail.html', context)
 
 

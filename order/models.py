@@ -5,10 +5,11 @@ import uuid
 
 class Order(models.Model):
     STATUS = (
-        ('New', 'New'),
-        ('Accepted', 'Accepted'),
-        ('Completed', 'Completed'),
-        ('Cancelled', 'Cancelled'),
+         ('New', 'New'),
+         ('Accepted', 'Accepted'),
+         ('Shipped', 'Shipped'),
+         ('Completed', 'Completed'),
+         ('Cancelled', 'Cancelled'),
     )
 
     user = models.ForeignKey(

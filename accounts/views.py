@@ -13,6 +13,9 @@ from .forms import EditProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from order.models import Order
+from store.models import Product
+from order.models import Order,OrderProduct
+from cart.views import get_current_cart,cart
 
 def register(request):
 
@@ -211,9 +214,87 @@ def my_orders(request):
 
 
 
+# @login_required
+# def order_detail(request, order_number):
+#     cart = get_current_cart(request)
+#     cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+#     total = 0
+#     quantity = 0
+
+#     for item in cart_items:
+#         total += item.product.price * item.quantity
+#         quantity += item.quantity
+
+#     tax = (2 * total) / 100
+#     grand_total = total + tax
+#     order = get_object_or_404(Order, order_number=order_number, user=request.user)
+    
+    
+#     order_products = OrderProduct.objects.filter(order=order)
+    
+#     context = {
+#         'cart_items': cart_items,
+#         'total': total,
+#         'quantity': quantity,
+#         'tax': tax,
+#         'grand_total': grand_total,
+#         'order': order,
+#         'order_products': order_products,
+#     }
+#     return render(request, 'accounts/order_detail.html', context)
+
+
+def product_detail(request, category_slug, product_slug):
+
+    # ----------- PRODUCT GET -----------
+    single_product = get_object_or_404(
+        Product,
+        category__slug=category_slug,
+        slug=product_slug
+    )
+
+    # ----------- CART LOGIC -----------
+    cart = get_current_cart(request)
+    cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+
+    total = 0
+    quantity = 0
+
+    for item in cart_items:
+        total += item.product.price * item.quantity
+        quantity += item.quantity
+
+    tax = (2 * total) / 100
+    grand_total = total + tax
+
+    # ----------- CONTEXT -----------
+    context = {
+        'single_product': single_product,
+        'cart_items': cart_items,
+        'total': total,
+        'quantity': quantity,
+        'tax': tax,
+        'grand_total': grand_total,
+    }
+
+    return render(request, 'product-detail.html', context)
+
+
 @login_required
-def order_detail(request,order_id):
+def cancel_order(request, order_number):
 
-    order = get_object_or_404(Order,id=order_id,user=request.user)
+    order = get_object_or_404(Order, order_number=order_number, user=request.user)
 
-    return render(request,'accounts/order_detail.html',{'order':order})
+    # Cannot cancel after shipped / completed
+    if order.status in ['Shipped', 'Completed', 'Cancelled']:
+        messages.error(request, "This order cannot be cancelled now.")
+        return redirect('my_orders')
+
+    order.status = 'Cancelled'
+    order.save()
+
+    messages.success(request, "Your order has been cancelled successfully.")
+    return redirect('my_orders')
+
+
+

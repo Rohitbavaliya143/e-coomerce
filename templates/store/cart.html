@@ -6,7 +6,15 @@
     <h1>Your Shopping Cart</h1>
 </div>
 <div class="container">
-
+    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     <div class="cart-layout">
 
         <!-- Cart Items -->
@@ -22,6 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     <!-- Item 1 -->
                      {% for cart_item in cart_items %}
                     <tr>

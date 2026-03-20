@@ -1,91 +1,177 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Order Detail {{ order.order_number }}{% endblock %}
+{% block title %}Order #{{ order.order_number }} - Details{% endblock %}
+
+{% block extra_css %}
+<style>
+    .order-header { border-bottom: 3px solid #0d6efd; }
+    .status-badge {
+        font-size: 1rem;
+        padding: 0.55em 1.1em;
+        min-width: 110px;
+        text-align: center;
+    }
+    .product-img-thumb {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid #eee;
+    }
+    .table th {
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        letter-spacing: 0.4px;
+        color: #555;
+    }
+    .info-label { color: #555; font-weight: 600; }
+    @media (max-width: 767px) {
+        .product-img-thumb { width: 60px; height: 60px; }
+    }
+</style>
+{% endblock %}
 
 {% block content %}
 
-<div class="container-fluid py-4" style="margin-top:100px;">
-    <div class="row">
+<div class="container py-5" style="margin-top: 80px;">
+    <div class="row g-4">
 
-        <!-- Sidebar (Left Column) -->
-        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <!-- Sidebar -->
+        <div class="col-lg-3">
             {% include 'accounts/sidebar.html' %}
         </div>
-        <!-- Additional Info (જો તમારા મોડેલમાં હોય તો ઉમેરો) -->
-        <div class="col-md-8">
-            <div class="bg-light p-4 rounded-3 border h-100">
-                <h6 class="fw-bold text-uppercase mb-3">Shipping & Payment</h6>
-                <p class="mb-2">
-                    <!-- Shipping address જો modelમાં હોય તો -->
-                    <strong>Shipping Address:</strong>
-                    {% if order.shipping_address %}{{ order.shipping_address }}{% else %}N/A{% endif %}
-                </p>
-                <p class="mb-2">
-                    <strong>Payment Method:</strong>
-                    {% if order.payment_method %}{{ order.payment_method }}{% else %}N/A{% endif %}
-                </p>
-                <p class="mb-0">
-                    <strong>Payment Status:</strong>
-                    <span class="badge bg-info">{{ order.payment_status|default:"Pending" }}</span>
-                </p>
-            </div>
-        </div>
-    </div>
 
-    <!-- Order Items Table -->
-    <h5 class="mb-3">Order Items</h5>
+        <!-- Main Content -->
+        <div class="col-lg-9">
 
-    {% if order.items.exists %}
-    <div class="table-responsive">
-        <table class="table table-hover align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col" class="text-end">Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in order.items.all %}
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <!-- જો product image હોય તો -->
-                            {% if item.product.image %}
-                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="60"
-                                class="me-3 rounded">
-                            {% endif %}
-                            <div>
-                                <strong>{{ item.product.name }}</strong>
-                                <small class="text-muted d-block">SKU: {{ item.product.sku|default:"N/A" }}</small>
+            <div class="card shadow border-0 mb-4">
+                <div class="card-header bg-white order-header px-4 py-4">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                        <div>
+                            <h3 class="mb-1 fw-bold">Order #{{ order.order_number }}</h3>
+                            <p class="text-muted mb-0">
+                                Placed on {{ order.created_at|date:"d M Y" }} at {{ order.created_at|time:"H:i" }}
+                            </p>
+                        </div>
+                        <span class="badge status-badge
+                            {% if order.status == 'Delivered' or order.status == 'Completed' %}bg-success
+                            {% elif order.status == 'Cancelled' %}bg-danger
+                            {% elif order.status in 'Processing,Accepted,Shipped' %}bg-warning text-dark
+                            {% else %}bg-secondary{% endif %}">
+                            {{ order.status }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+
+                    <!-- Shipping + Payment Row -->
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6">
+                            <div class="border rounded p-4 bg-light h-100">
+                                <h6 class="fw-bold text-uppercase mb-3 text-primary">Shipping Address</h6>
+                                {% if order.address %}
+                                    <p class="mb-3">{{ order.address }},{{ order.city }},{{ order.pincode }},{{ order.state }}</p>
+                                {% else %}
+                                    <p class="text-muted mb-3">No shipping address recorded</p>
+                                {% endif %}
+
+                                {% if order.first_name %}
+                                    <p class="mb-1"><span class="info-label">Name:</span> {{ order.first_name }} {{ order.last_name }}</p>
+                                {% endif %}
+                                {% if order.phone %}
+                                    <p class="mb-0"><span class="info-label">Phone:</span> {{ order.phone }}</p>
+                                {% endif %}
                             </div>
                         </div>
-                    </td>
-                    <td>₹{{ item.price|floatformat:2 }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td class="text-end fw-bold">₹{{ item.subtotal|floatformat:2 }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr class="border-top">
-                    <td colspan="3" class="text-end fw-bold">Total:</td>
-                    <td class="text-end fs-5 fw-bold text-primary">₹{{ order.order_total|floatformat:2 }}</td>
-                </tr>
-            </tfoot>
-        </table>
+
+                        <div class="col-md-6">
+                            <div class="border rounded p-4 bg-light h-100">
+                                <h6 class="fw-bold text-uppercase mb-3 text-primary">Payment & Order Info</h6>
+                                <p class="mb-2">
+                                    <span class="info-label">Method:</span> {{ order.payment_method }}
+                                </p>
+                                <p class="mb-2">
+                                    <span class="info-label">Payment Status:</span>
+                                    <span class="badge bg-info ms-2">{{ order.status }}</span>
+                                </p>
+                                {% if order.order_number %}
+                                    <p class="mb-0">
+                                        <span class="info-label">Transaction ID:</span> {{ order.order_number }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Items -->
+                    <h5 class="fw-bold mb-3">Ordered Items ({{  cart_item.quantity  }})</h5>
+
+                    {% if order_products %}
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Unit Price</th>
+                                    <th>Qty</th>
+                                    <th class="text-end">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cart_item in cart_items %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            {% if cart_item.product.image %}
+                                            <img src="{{  cart_item.product.images.url }}l }}"
+                                                 alt="{{ item.product.name }}"
+                                                 class="product-img-thumb me-3">
+                                            {% else %}
+                                            <div class="me-3 bg-light rounded d-flex align-items-center justify-content-center"
+                                                 style="width:70px; height:70px;">
+                                                <i class="fas fa-box text-muted"></i>
+                                            </div>
+                                            {% endif %}
+                                            <div>
+                                                <strong>{{ cart_item.product.product_name }}</strong>
+                                                <small class="d-block text-muted">
+                                                    SKU: {{ item.product.sku|default:"—" }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>₹{{ item.price|floatformat:2 }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td class="text-end fw-bold">
+                                        
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot class="border-top">
+                                <tr>
+                                    <td colspan="3" class="text-end fw-bold pe-4 py-3">Grand Total:</td>
+                                    <td class="text-end fs-4 fw-bold text-primary pe-4 py-3">
+                                       
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-5 bg-light rounded-3">
+                        <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
+                        <h5 class="text-muted">No products found in this order</h5>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
     </div>
-    {% else %}
-    <div class="text-center py-5">
-        <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
-        <p class="text-muted">No items found in this order.</p>
-    </div>
-    {% endif %}
-</div>
-</div>
-</div>
-</div>
 </div>
 
 {% endblock %}

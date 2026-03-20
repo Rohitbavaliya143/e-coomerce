@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container" style="margin-top: 13vh;">
+
+    <div class="row g-5">
+
+        <!-- LEFT SIDE - PRODUCT IMAGE -->
+        <div class="col-md-5">
+
+            <div class="card border-0 shadow-lg p-3 text-center">
+                <img src="{{ single_product.images.url }}" class="img-fluid rounded product-img"
+                    alt="{{ single_product.product_name }}">
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE - PRODUCT DETAILS -->
+        <div class="col-md-7">
+
+            <h2 class="fw-bold mb-3">{{ single_product.product_name }}</h2>
+
+            <!-- PRICE -->
+            <h3 class="text-success fw-bold mb-3">₹ {{ single_product.price }}</h3>
+
+            <!-- STOCK STATUS -->
+            {% if single_product.stock > 0 %}
+            <p class="text-success fw-bold">In Stock</p>
+            {% else %}
+            <p class="text-danger fw-bold">Out of Stock</p>
+            {% endif %}
+
+            <hr>
+
+            <!-- DESCRIPTION -->
+            <h5 class="fw-bold">Product Description</h5>
+            <p class="text-muted">
+                {{ single_product.description }}
+            </p>
+
+            <hr>
+
+            <!-- PRODUCT INFO -->
+            <h5 class="fw-bold">Product Information</h5>
+
+            <table class="table table-borderless mt-3">
+                <tr>
+                    <th width="150">Category</th>
+                    <td>{{ single_product.category }}</td>
+                </tr>
+                <tr>
+                    <th>Available Stock</th>
+                    <td>{{ single_product.stock }}</td>
+                </tr>
+            </table>
+
+            <hr>
+
+            <!-- BUTTONS -->
+            {% if single_product.stock > 0 %}
+
+            <div class="d-flex gap-3">
+
+                <a href="{% url 'add_cart' single_product.id %}" class="btn btn-warning btn-lg px-4">
+                    🛒 Add To Cart
+                </a>
+
+                <a href="{% url 'add_wishlist' single_product.id %}" class="btn btn-outline-danger btn-lg px-4">
+                    ❤️ Wishlist
+                </a>
+
+            </div>
+            <!-- SMALL EXTRA INFO BOX -->
+            <div class="card mt-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h6 class="fw-bold mb-3">Why Buy From Us?</h6>
+
+                    <p class="mb-2">✔ 100% Original Products</p>
+                    <p class="mb-2">✔ Fast Delivery</p>
+                    <p class="mb-2">✔ Easy Return Policy</p>
+                    <p class="mb-0">✔ Secure Payment</p>
+                </div>
+            </div>
+
+            {% else %}
+
+            <button class="btn btn-danger btn-lg px-5">
+                Out of Stock
+            </button>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- EXTRA CSS -->
+<style>
+    .product-img {
+        transition: 0.4s;
+    }
+
+    .product-img:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+{% endblock %}
